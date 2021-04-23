@@ -2,7 +2,9 @@ package com.example.a2dgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,9 +19,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // window to fullscreen
-        Window window = getWindow();
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        // Set content view to game, so that objects in the game class can be rendered to the screen
-        setContentView(new Game(this));
+        // Window window = getWindow();
+        // window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // when the play botton is clicked
+        findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, GameActivity.class));
+            }
+        });
     }
 }
